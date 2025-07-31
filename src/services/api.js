@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8080/api'; // Change port if backend runs elsewhere
+const API_BASE = 'https://dailyjournal-backend-4.onrender.com/api'; // Change port if backend runs elsewhere
 
 const api = axios.create({
   baseURL: API_BASE,
