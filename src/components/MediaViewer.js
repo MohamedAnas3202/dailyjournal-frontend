@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogActions, Button, IconButton, Box, Typography } from '@mui/material';
 import { Close, NavigateBefore, NavigateNext } from '@mui/icons-material';
+import { getFullMediaUrl, API_BASE_URL } from '../config/api';
 
 const MediaViewer = ({ open, onClose, mediaUrl, mediaUrls = [], onNext, onPrev }) => {
   // Check if the current file is a PDF
@@ -9,30 +10,15 @@ const MediaViewer = ({ open, onClose, mediaUrl, mediaUrls = [], onNext, onPrev }
   // Check if the current file is an image
   const isImage = mediaUrl?.toLowerCase().match(/\.(jpeg|jpg|gif|png|webp)$/) !== null;
   
-  // Function to get the full media URL
-  const getFullMediaUrl = (url) => {
-    // If the URL already starts with http, return as is
-    if (url.startsWith('http')) {
-      return url;
-    }
-    // If it starts with /api/journals/media/, add the backend base URL
-    if (url.startsWith('/api/journals/media/')) {
-      return `http://localhost:8080${url}`;
-    }
-    // If it's just a filename, construct the full URL
-    if (!url.startsWith('/')) {
-      return `http://localhost:8080/api/journals/media/${url}`;
-    }
-    // For other cases, add the backend base URL
-    return `http://localhost:8080${url}`;
-  };
+  // Function to get the full media URL (now using imported function)
+  const getMediaUrl = (url) => getFullMediaUrl(url);
   
   // Helper function to download files as blobs
   const downloadFile = (url) => {
     // Get the filename from the URL
     const filename = url.split('/').pop();
     // Use fetch API to get the file as a blob
-    fetch(getFullMediaUrl(url), {
+    fetch(getMediaUrl(url), {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -57,7 +43,7 @@ const MediaViewer = ({ open, onClose, mediaUrl, mediaUrls = [], onNext, onPrev }
     });
   };
   
-  const fullMediaUrl = getFullMediaUrl(mediaUrl);
+  const fullMediaUrl = getMediaUrl(mediaUrl);
   
   return (
     <Dialog
