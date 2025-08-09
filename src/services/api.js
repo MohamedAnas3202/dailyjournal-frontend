@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { BACKEND_URL } from '../config/config';
 
-const API_BASE = 'https://dailyjournal-backend-4.onrender.com/api'; // Change port if backend runs elsewhere
+// Force the correct backend URL regardless of environment variables
+const API_BASE = `${BACKEND_URL}/api`;
 
 const api = axios.create({
   baseURL: API_BASE,

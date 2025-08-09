@@ -48,7 +48,8 @@ import {
   Search as SearchIcon,
   PersonRemove as PersonRemoveIcon
 } from '@mui/icons-material';
-import { getCurrentUser, updateProfile, uploadProfilePhoto, getMyFriends, getFriendCount, getJournals, removeFriend, getUserFriends } from '../services/api';
+import { getCurrentUser, updateProfile, uploadProfilePicture, getMyFriends, getFriendCount, getJournals, removeFriend, getUserFriends } from '../services/api';
+import { getProfilePictureUrl } from '../config/config';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {

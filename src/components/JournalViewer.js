@@ -36,6 +36,7 @@ import {
   Book as BookIcon,
   Favorite as FavoriteIcon
 } from '@mui/icons-material';
+import { getMediaUrl } from '../config/config';
 
 function JournalViewer({ open, onClose, entry, onDeleteFile, onOpenFileViewer }) {
   if (!entry) return null;
@@ -84,12 +85,8 @@ function JournalViewer({ open, onClose, entry, onDeleteFile, onOpenFileViewer })
     return 'document';
   };
 
-  const getFullFileUrl = (url) => {
-    if (url.startsWith('http')) return url;
-    if (url.startsWith('/api/journals/media/')) return `https://dailyjournal-backend-4.onrender.com${url}`;
-    if (!url.startsWith('/')) return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
-    return `https://dailyjournal-backend-4.onrender.com${url}`;
-  };
+  // Use the config function instead of local function
+  const getFullFileUrl = getMediaUrl;
 
   const getMoodColor = (mood) => {
     const moodColors = {
