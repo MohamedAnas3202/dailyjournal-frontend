@@ -58,8 +58,7 @@ import {
   getJournal,
   getCurrentUser,
   getPublicJournals,
-  searchPublicJournals,
-  getMediaUrl
+  searchPublicJournals
 } from '../services/api';
 
 function UserJournals() {
@@ -260,7 +259,18 @@ function UserJournals() {
     return 'document';
   };
 
-  const getFullFileUrl = getMediaUrl;
+  const getFullFileUrl = (url) => {
+    if (url.startsWith('http')) {
+      return url;
+    }
+    if (url.startsWith('/api/journals/media/')) {
+      return `https://dailyjournal-backend-4.onrender.com${url}`;
+    }
+    if (!url.startsWith('/')) {
+      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
+    }
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
+  };
 
   return (
     <>

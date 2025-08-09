@@ -1,24 +1,6 @@
 import axios from 'axios';
 
-// Use environment variable - automatically switches between dev and production
-const API_BASE = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
-
-// Export helper functions for media URLs
-export const getMediaUrl = (url) => {
-  if (!url) return '';
-  if (url.startsWith('http')) return url;
-  const baseUrl = API_BASE.replace('/api', '');
-  if (url.startsWith('/api/journals/media/')) return `${baseUrl}${url}`;
-  if (!url.startsWith('/')) return `${baseUrl}/api/journals/media/${url}`;
-  return `${baseUrl}${url}`;
-};
-
-export const getProfilePictureUrl = (profilePicture) => {
-  if (!profilePicture) return undefined;
-  if (profilePicture.startsWith('http')) return profilePicture;
-  const baseUrl = API_BASE.replace('/api', '');
-  return `${baseUrl}${profilePicture}`;
-};
+const API_BASE = 'https://dailyjournal-backend-4.onrender.com/api'; // Change port if backend runs elsewhere
 
 const api = axios.create({
   baseURL: API_BASE,

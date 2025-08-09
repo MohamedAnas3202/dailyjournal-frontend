@@ -100,8 +100,7 @@ import {
   uploadJournalFiles, 
   deleteJournalFile,
   publishJournal,
-  unpublishJournal,
-  getMediaUrl
+  unpublishJournal
 } from '../services/api';
 
 function Dashboard() {
@@ -340,8 +339,22 @@ function Dashboard() {
     return 'document';
   };
 
-  // Use centralized function from API service
-  const getFullFileUrl = getMediaUrl;
+  const getFullFileUrl = (url) => {
+    // If the URL already starts with http, return as is
+    if (url.startsWith('http')) {
+      return url;
+    }
+    // If it starts with /api/journals/media/, add the backend base URL
+    if (url.startsWith('/api/journals/media/')) {
+      return `https://dailyjournal-backend-4.onrender.com${url}`;
+    }
+    // If it's just a filename, construct the full URL
+    if (!url.startsWith('/')) {
+      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
+    }
+    // For other cases, add the backend base URL
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
+  };
 
   const getMoodColor = (mood) => {
     const colors = {

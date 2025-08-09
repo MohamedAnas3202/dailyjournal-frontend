@@ -19,7 +19,7 @@ import {
   Visibility as VisibilityIcon
 } from '@mui/icons-material';
 import api from '../services/api';
-import { uploadJournalFiles, deleteJournalFile, getMediaUrl } from '../services/api';
+import { uploadJournalFiles, deleteJournalFile } from '../services/api';
 import JournalEditor from './JournalEditor';
 import MediaViewer from './MediaViewer';
 
@@ -480,7 +480,22 @@ const JournalsTable = () => {
     return <DocumentIcon />;
   }
 
-  const getFullFileUrl = getMediaUrl;
+  function getFullFileUrl(url) {
+    // If the URL already starts with http, return as is
+    if (url.startsWith('http')) {
+      return url;
+    }
+    // If it starts with /api/journals/media/, add the backend base URL
+    if (url.startsWith('/api/journals/media/')) {
+      return `https://dailyjournal-backend-4.onrender.com${url}`;
+    }
+    // If it's just a filename, construct the full URL
+    if (!url.startsWith('/')) {
+      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
+    }
+    // For other cases, add the backend base URL
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
+  }
   
   // Helper function to download files as blobs
   function downloadFile(url) {
