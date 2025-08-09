@@ -100,9 +100,9 @@ import {
   uploadJournalFiles, 
   deleteJournalFile,
   publishJournal,
-  unpublishJournal
+  unpublishJournal,
+  getMediaUrl
 } from '../services/api';
-import { getMediaUrl } from '../config/config';
 
 function Dashboard() {
   const { token } = useContext(AuthContext);
@@ -340,7 +340,7 @@ function Dashboard() {
     return 'document';
   };
 
-  // Use the config function
+  // Use centralized function from API service
   const getFullFileUrl = getMediaUrl;
 
   const getMoodColor = (mood) => {

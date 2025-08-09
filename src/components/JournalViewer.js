@@ -36,7 +36,7 @@ import {
   Book as BookIcon,
   Favorite as FavoriteIcon
 } from '@mui/icons-material';
-import { getMediaUrl } from '../config/config';
+import { getMediaUrl } from '../services/api';
 
 function JournalViewer({ open, onClose, entry, onDeleteFile, onOpenFileViewer }) {
   if (!entry) return null;
@@ -85,7 +85,6 @@ function JournalViewer({ open, onClose, entry, onDeleteFile, onOpenFileViewer })
     return 'document';
   };
 
-  // Use the config function instead of local function
   const getFullFileUrl = getMediaUrl;
 
   const getMoodColor = (mood) => {

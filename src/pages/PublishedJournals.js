@@ -46,8 +46,7 @@ import {
 } from '@mui/icons-material';
 import { AuthContext } from '../context/AuthContext';
 import JournalViewer from '../components/JournalViewer';
-import { getAllPublishedJournals, searchPublishedJournals } from '../services/api';
-import { getMediaUrl } from '../config/config';
+import { getAllPublishedJournals, searchPublishedJournals, getMediaUrl } from '../services/api';
 
 function PublishedJournals() {
   const { token } = useContext(AuthContext);
@@ -205,7 +204,6 @@ function PublishedJournals() {
     return 'document';
   };
 
-  // Use the config function
   const getFullFileUrl = getMediaUrl;
 
   const handleDownloadFile = async (url) => {

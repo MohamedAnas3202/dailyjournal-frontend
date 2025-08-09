@@ -19,8 +19,7 @@ import {
   Visibility as VisibilityIcon
 } from '@mui/icons-material';
 import api from '../services/api';
-import { uploadJournalFiles, deleteJournalFile } from '../services/api';
-import { getMediaUrl } from '../config/config';
+import { uploadJournalFiles, deleteJournalFile, getMediaUrl } from '../services/api';
 import JournalEditor from './JournalEditor';
 import MediaViewer from './MediaViewer';
 
@@ -481,7 +480,6 @@ const JournalsTable = () => {
     return <DocumentIcon />;
   }
 
-  // Use the config function
   const getFullFileUrl = getMediaUrl;
   
   // Helper function to download files as blobs

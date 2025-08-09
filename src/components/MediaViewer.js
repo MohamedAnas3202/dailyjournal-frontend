@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogActions, Button, IconButton, Box, Typography } from '@mui/material';
 import { Close, NavigateBefore, NavigateNext } from '@mui/icons-material';
-import { getMediaUrl } from '../config/config';
+import { getMediaUrl } from '../services/api';
 
 const MediaViewer = ({ open, onClose, mediaUrl, mediaUrls = [], onNext, onPrev }) => {
   // Check if the current file is a PDF
@@ -10,8 +10,7 @@ const MediaViewer = ({ open, onClose, mediaUrl, mediaUrls = [], onNext, onPrev }
   // Check if the current file is an image
   const isImage = mediaUrl?.toLowerCase().match(/\.(jpeg|jpg|gif|png|webp)$/) !== null;
   
-  // Function to get the full media URL
-  // Use the config function
+  // Use centralized function
   const getFullMediaUrl = getMediaUrl;
   
   // Helper function to download files as blobs

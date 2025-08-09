@@ -59,12 +59,8 @@ import {
   getCurrentUser,
   getPublicJournals,
   searchPublicJournals,
-  deleteJournal,
-  updateJournal,
-  uploadJournalFiles,
-  deleteJournalFile
+  getMediaUrl
 } from '../services/api';
-import { getMediaUrl } from '../config/config';
 
 function UserJournals() {
   const { userId } = useParams();
@@ -264,7 +260,6 @@ function UserJournals() {
     return 'document';
   };
 
-  // Use the config function
   const getFullFileUrl = getMediaUrl;
 
   return (
