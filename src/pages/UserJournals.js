@@ -58,8 +58,13 @@ import {
   getJournal,
   getCurrentUser,
   getPublicJournals,
-  searchPublicJournals
+  searchPublicJournals,
+  deleteJournal,
+  updateJournal,
+  uploadJournalFiles,
+  deleteJournalFile
 } from '../services/api';
+import { getMediaUrl } from '../config/config';
 
 function UserJournals() {
   const { userId } = useParams();
@@ -259,18 +264,8 @@ function UserJournals() {
     return 'document';
   };
 
-  const getFullFileUrl = (url) => {
-    if (url.startsWith('http')) {
-      return url;
-    }
-    if (url.startsWith('/api/journals/media/')) {
-      return `https://dailyjournal-backend-4.onrender.com${url}`;
-    }
-    if (!url.startsWith('/')) {
-      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
-    }
-    return `https://dailyjournal-backend-4.onrender.com${url}`;
-  };
+  // Use the config function
+  const getFullFileUrl = getMediaUrl;
 
   return (
     <>

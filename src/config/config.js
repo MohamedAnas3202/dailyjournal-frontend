@@ -1,5 +1,13 @@
-// Force production backend URL - overrides any environment variables
-export const BACKEND_URL = 'https://dailyjournal-backend-4.onrender.com';
+// FORCE production backend URL - completely ignore environment variables
+// This will override any REACT_APP_API_BASE_URL set in Vercel
+const FORCED_BACKEND_URL = 'https://dailyjournal-backend-4.onrender.com';
+
+// Export the forced URL
+export const BACKEND_URL = FORCED_BACKEND_URL;
+
+// Debug: Log what URL we're using
+console.log('🔧 FORCED BACKEND URL:', FORCED_BACKEND_URL);
+console.log('🔧 Environment variable (ignored):', process.env.REACT_APP_API_BASE_URL);
 
 // Helper function to get full media URL
 export const getMediaUrl = (url) => {
