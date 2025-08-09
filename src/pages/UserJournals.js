@@ -266,7 +266,6 @@ function UserJournals() {
     if (url.startsWith('/api/journals/media/')) {
       return `https://dailyjournal-backend-4.onrender.com${url}`;
     }
-    // If it's just a filename, construct the full URL
     if (!url.startsWith('/')) {
       return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
     }

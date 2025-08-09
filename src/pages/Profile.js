@@ -48,8 +48,7 @@ import {
   Search as SearchIcon,
   PersonRemove as PersonRemoveIcon
 } from '@mui/icons-material';
-import { getCurrentUser, updateProfile, uploadProfilePicture, getMyFriends, getFriendCount, getJournals, removeFriend, getUserFriends } from '../services/api';
-import { getProfilePictureUrl } from '../utils/urlUtils';
+import { getCurrentUser, updateProfile, uploadProfilePhoto, getMyFriends, getFriendCount, getJournals, removeFriend, getUserFriends } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
@@ -390,7 +389,7 @@ function Profile() {
             <Grid item>
               <Box sx={{ position: 'relative' }}>
                 <Avatar
-                  src={getProfilePictureUrl(user?.profilePicture)}
+                  src={user?.profilePicture ? `https://dailyjournal-backend-4.onrender.com${user.profilePicture}` : undefined}
                   sx={{ 
                     width: 120, 
                     height: 120, 
@@ -829,7 +828,7 @@ function Profile() {
                   >
                     <CardContent sx={{ textAlign: 'center', p: 2 }}>
                       <Avatar
-                        src={getProfilePictureUrl(friend.profilePicture)}
+                        src={friend.profilePicture ? `https://dailyjournal-backend-4.onrender.com${friend.profilePicture}` : undefined}
                         sx={{ width: 60, height: 60, mx: 'auto', mb: 2 }}
                       >
                         {getInitials(friend.name)}
@@ -1020,7 +1019,7 @@ function Profile() {
                   >
                     <CardContent sx={{ textAlign: 'center', p: 2 }}>
                       <Avatar
-                        src={getProfilePictureUrl(friendOfFriend.profilePicture)}
+                        src={friendOfFriend.profilePicture ? `https://dailyjournal-backend-4.onrender.com${friendOfFriend.profilePicture}` : undefined}
                         sx={{ width: 50, height: 50, mx: 'auto', mb: 1 }}
                       >
                         {getInitials(friendOfFriend.name)}
