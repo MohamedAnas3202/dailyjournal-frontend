@@ -86,9 +86,9 @@ function JournalViewer({ open, onClose, entry, onDeleteFile, onOpenFileViewer })
 
   const getFullFileUrl = (url) => {
     if (url.startsWith('http')) return url;
-    if (url.startsWith('/api/journals/media/')) return `http://localhost:8080${url}`;
-    if (!url.startsWith('/')) return `http://localhost:8080/api/journals/media/${url}`;
-    return `http://localhost:8080${url}`;
+    if (url.startsWith('/api/journals/media/')) return `https://dailyjournal-backend-4.onrender.com${url}`;
+    if (!url.startsWith('/')) return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
   };
 
   const getMoodColor = (mood) => {

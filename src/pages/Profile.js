@@ -389,7 +389,7 @@ function Profile() {
             <Grid item>
               <Box sx={{ position: 'relative' }}>
                 <Avatar
-                  src={user?.profilePicture ? `http://localhost:8080${user.profilePicture}` : undefined}
+                  src={user?.profilePicture ? `https://dailyjournal-backend-4.onrender.com${user.profilePicture}` : undefined}
                   sx={{ 
                     width: 120, 
                     height: 120, 
@@ -828,7 +828,7 @@ function Profile() {
                   >
                     <CardContent sx={{ textAlign: 'center', p: 2 }}>
                       <Avatar
-                        src={friend.profilePicture ? `http://localhost:8080${friend.profilePicture}` : undefined}
+                        src={friend.profilePicture ? `https://dailyjournal-backend-4.onrender.com${friend.profilePicture}` : undefined}
                         sx={{ width: 60, height: 60, mx: 'auto', mb: 2 }}
                       >
                         {getInitials(friend.name)}
@@ -903,7 +903,7 @@ function Profile() {
         <DialogContent>
           <Box sx={{ textAlign: 'center', py: 2 }}>
             <Avatar
-              src={user?.profilePicture ? `http://localhost:8080${user.profilePicture}` : undefined}
+              src={user?.profilePicture ? `https://dailyjournal-backend-4.onrender.com${user.profilePicture}` : undefined}
               sx={{ width: 100, height: 100, mx: 'auto', mb: 2 }}
             >
               {getInitials(user?.name)}
@@ -1019,7 +1019,7 @@ function Profile() {
                   >
                     <CardContent sx={{ textAlign: 'center', p: 2 }}>
                       <Avatar
-                        src={friendOfFriend.profilePicture ? `http://localhost:8080${friendOfFriend.profilePicture}` : undefined}
+                        src={friendOfFriend.profilePicture ? `https://dailyjournal-backend-4.onrender.com${friendOfFriend.profilePicture}` : undefined}
                         sx={{ width: 50, height: 50, mx: 'auto', mb: 1 }}
                       >
                         {getInitials(friendOfFriend.name)}

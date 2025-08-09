@@ -264,12 +264,13 @@ function UserJournals() {
       return url;
     }
     if (url.startsWith('/api/journals/media/')) {
-      return `http://localhost:8080${url}`;
+      return `https://dailyjournal-backend-4.onrender.com${url}`;
     }
+    // If it's just a filename, construct the full URL
     if (!url.startsWith('/')) {
-      return `http://localhost:8080/api/journals/media/${url}`;
+      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
     }
-    return `http://localhost:8080${url}`;
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
   };
 
   return (

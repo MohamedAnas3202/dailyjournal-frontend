@@ -487,14 +487,14 @@ const JournalsTable = () => {
     }
     // If it starts with /api/journals/media/, add the backend base URL
     if (url.startsWith('/api/journals/media/')) {
-      return `http://localhost:8080${url}`;
+      return `https://dailyjournal-backend-4.onrender.com${url}`;
     }
     // If it's just a filename, construct the full URL
     if (!url.startsWith('/')) {
-      return `http://localhost:8080/api/journals/media/${url}`;
+      return `https://dailyjournal-backend-4.onrender.com/api/journals/media/${url}`;
     }
     // For other cases, add the backend base URL
-    return `http://localhost:8080${url}`;
+    return `https://dailyjournal-backend-4.onrender.com${url}`;
   }
   
   // Helper function to download files as blobs
